@@ -1,0 +1,46 @@
+<div class="container">
+    <table class="table">
+        <thead>
+        <tr>
+            <th>Product Name</th>
+            <th>Price of Product</th>
+            <th>Toppings</th>
+            <th>Price of Toppings</th>
+            <th>Quantity</th>
+        </tr>
+        </thead>
+        <tbody ng-repeat="item in order.orderItems">
+        <tr>
+            <td>{{item.product.name}}</td>
+            <td>{{item.priceOfProduct}} TL</td>
+            <td>
+                <span ng-repeat="t in item.toppings">{{t.name}},&nbsp;</span>
+            </td>
+            <td>{{item.priceOfToppings}} TL</td>
+            <td>{{item.quantity}}</td>
+        </tr>
+        </tbody>
+    </table>
+    <hr/>
+    <table class="table" style="float: right;width: 550px">
+        <thead>
+        <tr>
+            <th>Total Price</th>
+            <th>Total Discount</th>
+            <th>Final Price</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr>
+            <td>{{order.totalPrice}} TL</td>
+            <td>{{order.discountDetail.totalDiscount}} TL</td>
+            <td>{{order.finalPrice}} TL</td>
+        </tr>
+        <tr>
+            <td></td>
+            <td></td>
+            <td><button class="btn btn-primary" ng-click="completeOrder()">Alışverişi Tamamla</button></td>
+        </tr>
+        </tbody>
+    </table>
+</div>

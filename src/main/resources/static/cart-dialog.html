@@ -1,0 +1,13 @@
+<div class="modal-header">
+    <h3>Details</h3>
+</div>
+<div class="modal-body">
+    <input type="number" placeholder="quantity" ng-model="quantity"/>
+    <hr>
+    <div ng-repeat="t in toppings">
+        <input type="checkbox" data-checklist-model="selectedToppings" data-checklist-value="t"> {{t.name}}
+        <span style="color: gray">({{t.price}} TL)</span>
+    </div>
+    <hr>
+    <button class="btn btn-default" ng-click="addToCart(quantity)">Add to Cart</button>
+</div>

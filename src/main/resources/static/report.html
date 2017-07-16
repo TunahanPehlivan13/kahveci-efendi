@@ -1,0 +1,56 @@
+<div class="container">
+    <table class="table">
+        <tbody>
+        <tr>
+            <td><label>Product</label></td>
+            <td>
+                <select ng-model="selectedProduct"
+                        ng-options="product as product.name for product in products track by product.id"></select>
+            </td>
+            <td><label>Discount Type</label></td>
+            <td>
+                <select ng-model="selectedDiscountType"
+                        ng-options="discountType as discountType for discountType in discountTypes"></select>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <button class="btn btn-primary" ng-click="search(selectedProduct, selectedDiscountType)">Search</button>
+            </td>
+            <td></td>
+            <td></td>
+            <td></td>
+        </tr>
+        </tbody>
+    </table>
+
+    <hr/>
+
+    <table class="table">
+        <thead>
+        <tr>
+            <th>ID</th>
+            <th>Discount Type</th>
+            <th>Products with toppings</th>
+            <th>Total Price</th>
+            <th>Discount Price</th>
+            <th>Final Price</th>
+        </tr>
+        </thead>
+        <tbody ng-repeat="order in orders">
+        <td>{{order.id}}</td>
+        <td>{{order.discountDetail.discountProvider}}</td>
+        <td>
+            <span ng-repeat="orderItem in order.orderItems">
+                <label>{{orderItem.product.name}}</label>(
+                <span ng-repeat="t in orderItem.toppings">
+                    {{t.name}},
+                </span>)
+            </span>
+        </td>
+        <td>{{order.totalPrice}}</td>
+        <td>{{order.discountDetail.totalDiscount}}</td>
+        <td>{{order.finalPrice}}</td>
+        </tbody>
+    </table>
+</div>
